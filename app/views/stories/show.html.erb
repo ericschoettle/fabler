@@ -1,0 +1,12 @@
+<h1>here's a story</h1>
+
+<% @story.entries.each do |entry|  %>
+  <% if entry.image_url %>
+    <%= image_tag(entry.image_url) %>
+  <% end %>
+  <h1><%= entry.sentence %></h1>
+<% end %>
+<%= link_to 'New Entry', new_story_entry_path(@story) %>
+
+
+<%= link_to 'Home', '/' %>

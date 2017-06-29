@@ -1,0 +1,24 @@
+<h1>Welcome to Fabler</h1>
+
+<% if @users.any? %>
+  <ul>
+    <% @users.each do |user| %>
+    <li><%= link_to user.name, user_path(user) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <h3>No users yet</h3>
+<% end %>
+
+<% if @stories.any? %>
+<ul>
+  <% @stories.each do |story| %>
+  <li><%= link_to 'Story', story_path(story) %></li>
+  <% end %>
+</ul>
+<% else %>
+  <h3>No story yet</h3>
+<% end %>
+
+<%= link_to "Users", users_path() %>
+<%= link_to "Stories", stories_path() %>

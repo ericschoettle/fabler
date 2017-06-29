@@ -1,0 +1,20 @@
+<h2>You made it to new entry, a story has been generated and passed here.</h2>
+Story id = <%= @story.id %>
+<br>
+<br>
+<%= link_to 'Home', '/' %>
+ <%= @entry.image_url %>
+<%= image_tag(@entry.image_url) %>
+
+<%= form_for [@story, @entry], :class => "form-control" do |f| %>
+  <%= f.select(:user_id) do %>
+    <%= content_tag(:option,"Select Author(You)", value: nil)%>
+   <% @users.each do |c| -%>
+     <%= content_tag(:option, c.name, value: c.id)%>
+    <%end %>
+  <%end %>
+  <%= f.text_area :sentence, :class =>"form-control", :placeholder =>"Your contribution here" %>
+  <% f.text_field :image_url, :placeholder => @entry.image_url %> 
+
+  <%= f.submit 'Submit', :class => "form-button" %>
+<% end %>
